@@ -33,12 +33,16 @@
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-        var jsonData = $.ajax({
-            url: "/firmChart",
-            dataType: "json",
-            async: false
-            }).responseText;
-        var data = new google.visualization.DataTable(jsonData);
+       var data = google.visualization.arrayToDataTable([
+          ['Telecommunications', '3'],
+          ['Consumer Discretionary',     11],
+          ['Financials',      2],
+          ['Energy',  2],
+          ['Industrials', 2],
+          ['Materials',    7],
+          ['Information Technology',    8]
+        ]);
+        var data = new google.visualization.DataTable(data);
         var options = {
           pieHole: 0.5,
           chartArea: {'width': '90%', 'height': '100%'},
